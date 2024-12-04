@@ -1,0 +1,101 @@
+<!-- EDIT & REMOVE OR MODIFY THE DOM ELEMENTS -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> DOM Learning</title>
+</head>
+<body style="background-color: #212121; color: #fff; font-size:large;">
+
+<ul class="language">
+    <li>JavaScript</li>
+
+
+</ul>
+
+</body>
+<script>
+
+//ADDITION OF ELEMET
+
+    function addLanguage(lang){
+        const list = document.createElement('li')
+        list.innerHTML = lang
+        console.log(list)
+        // document.body.ul.li.appendElemenet(list) //not use full to add tan list
+          document.querySelector(".language").appendChild(list)
+
+        // or below is the another way to append
+        /*
+        const ul_class = document.querySelector(".language")
+        ul_class.appendChild(list) 
+
+        
+        console.log(ul_class) //RETURNS COMPLETE CLASS
+        console.log(ul_class.children)
+        console.log(ul_class.children.length)   //1
+        console.log(ul_class.children[0].innerHTML)  // for lenght =1, 0 ->is the starting index
+        */
+        
+    }
+
+    addLanguage("Node Js")
+    addLanguage("Python")
+
+    /*
+     NOTE : innerHTML IS TRAVERSE THE DOM TREE FROM START TO THE END 
+    SO every time it calls the function everytym 
+    it travers till the end so it will not be the good practice in bigg projects.
+    
+    */
+
+    function optimisedAddLang(lang){
+        const li = document.createElement("li")
+        li.appendChild(document.createTextNode(lang))
+        // console.log(li)
+        document.querySelector(".language").appendChild(li)
+    }
+
+optimisedAddLang("Java")
+
+//EDIT 
+
+//  const parents = document.getElementsByClassName(".language")
+// console.log(parents)
+
+//OR
+const pare =document.querySelector("li:nth-child(2)") //second list want to edit
+console.log(pare.innerHTML)
+//1.
+// pare.innerHTML="SQL" // TRY TO AVOID THE innerHTML
+
+//2.
+const newli = document.createElement("li")
+newli.textContent="C++"
+console.log(newli)
+pare.replaceWith(newli) //get the reference of existing element and replace with new item by creating the new item.
+
+
+//EDIT
+const lastlang= document.querySelector("li:last-child")
+console.log(lastlang) //GET Existing ele
+
+// const newlang =  document.createTextNode("Node Js")  // It create the New Node 
+//OR
+const newlang =  document.createElement("li") // It actually create a element under the list Node
+newlang.textContent ="Node Js" 
+console.log(newlang) //CREATE new ele
+
+lastlang.replaceWith(newlang)
+
+
+//REMOVE
+const lang1= document.querySelector("li:nth-child(2)")
+console.log(lang1.innerHTML) //GET Existing ele
+
+lang1.remove()
+
+
+</script>
+
+</html>

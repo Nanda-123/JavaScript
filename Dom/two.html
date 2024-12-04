@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> DOM Learning</title>
+</head>
+<body style="background-color: #212121; color: #fff; font-size:large;">
+
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+
+</body>
+<script>
+ const parent = document.querySelector('.parent')
+ 
+ console.log(parent)
+ console.log(parent.children)
+//  console.log(parent.children[1])
+// console.log(parent.children.innerHTML)
+console.log(parent.children.length)
+//  console.log(parent.children[0].innerHTML) //nodelist like Array
+
+ for (let index = 0; index < parent.children.length; index++) {
+    const element = parent.children[index]
+    console.log(element.innerHTML)
+
+ }
+parent.children[0].style.color="red"
+console.log(parent.firstElementChild)
+console.log(parent.firstElementChild.innerHTML)
+console.log(parent.lastElementChild.innerHTML)
+
+ console.log("")
+ console.log("CHILDss")
+
+ const child = document.querySelectorAll(".day")
+ console.log(child)
+ console.log(child[0])
+ console.log(child[0].innerHTML)
+
+console.log("")
+
+ for (let index = 0; index < child.length; index++) {
+    const element = child[index];
+    console.log(element.innerHTML)  
+ }
+
+ 
+//  console.log(child.parentElement);
+//  console.log(child.nextElementSibling)
+
+console.log("NODE : ", parent.childNodes) //gives 9 nodes : including childs & linebreak 
+
+</script>
+
+
+</html>

@@ -1,0 +1,39 @@
+
+<!-- CREATING ELEMENET FORM THE  DOM SCRIPT -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title> DOM Learning</title>
+</head>
+<body style="background-color: #212121; color: #fff; font-size:large;">
+
+
+
+</body>
+<script>
+    const div = document.createElement("div")
+    console.log(div)
+    div.className ="div_class"
+    // div.id ="div_id"
+    div.id=Math.round(Math.random() * 10 + 1)
+
+    //Custom attribute set
+
+    div.setAttribute("title",  "Generated Title from NANDA")
+    div.style.backgroundColor ="blue"
+    div.style.padding="12px"
+    // div.innerHTML = "Genarated div from DOM Hml file" // OVERWRITE THE EXISTING VALUE IN DIV
+    // const div_info = document.createTextNode("Generated div from DOM HTML file");
+       const div_info = document.createTextNode("Generated div from DOM HTML file");
+
+    
+    div.appendChild(div_info) //INSERT INTO DIV BLOCK
+
+    document.body.appendChild(div) //insert the div block into the body of html
+
+
+
+</script>
+
+
+</html>
