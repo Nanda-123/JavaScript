@@ -1,0 +1,37 @@
+<!-- GUESS THE NUMBER -->
+
+<html>
+    <head>
+        <title> GUESS THE NUMBER !!!</title>
+    </head>
+    <body style="background-color: rgb(227, 200, 131); ">
+        <div id="container" style="padding-left: 36%; padding-top: 6%; font-size: 18px;">
+            <h1>Number Gussing Game </h1>
+            <p>Try and guess a random number between 1 to 100</p>
+            <p>you have 10 attempts to guess the right number</p>
+            <br>
+
+            <form class="form">
+                <label for ="guessField" id = "guess"> Guess a Number </label> <!--Text Label -->
+                <input type="text" id ="guessField" class="guessField"
+                style="height: 30px; border-radius: 4px;"> <!-- Text box -->
+                
+                <br>
+
+                <input style="margin-left: 21ch ; margin-top: 16px; border-radius: 3px;background-color: rgb(173, 158, 223);" 
+                 type="submit" id="sbmt" value="Submit guess" class="guessSubmit"> <!-- BUTTON TO SUBMIT -->
+            </form>
+
+            <div class="result"> <!--To store the previous guesses-->
+                <p > Previous Guess : <span class="guesse"> </span> </p> 
+                <p > Guesses Remaining <span class="remainingGuesses"> 10</span> </p> <!--To show the Remaining guesses-->
+                <p class="lowOrHigh"></p> <!-- The enter no is GT / LT the random Number-->
+           </div>
+           <div class="msg"></div>
+
+        </div>
+
+        <!-- <script src="project4.js"></script> -->
+    </body>
+    <script src="project4_1.js"></script>
+</html>
