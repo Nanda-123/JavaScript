@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #img {
+          width: 300px;
+          height: 300px;
+          border: 1px solid #ccc;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      </style>
+
+</head>
+<body >
+   <table>
+    
+    <tr>
+        <td>0</td>
+        <td>UNSENT</td>
+        <td>Client has been created. open() not called yet.</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>OPENED</td>
+        <td>open() has been called.</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>HEADERS_RECEIVED</td>
+        <td>send() has been called, and headers and status are available.</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>LOADING</td>
+        <td>Downloading; responseText holds partial data.</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>DONE</td>
+        <td> The operation is complete.</td>      
+    </tr>
+   </table>
+		
+   <div id="img">
+
+   </div>
+   <h3>Followers : <p id ="followers"> </p> </h3>
+
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/hiteshchoudhary' ;
+    const xhr = new XMLHttpRequest(); //Using HTTP we can send and request the data.
+    xhr.open('GET',requestUrl) ; //ID = 1, just open will not call the server we need use send to call / request
+    console.log(xhr.readyState); // IT ONLY GET THE ID FOR OPEN() =1, 
+     
+    //GET ALL STATES IN LOOP LIKE  :
+    //onReadyStateChange : It continuously monitor the actions / states
+    xhr.send();
+    let image, no ;
+
+    xhr.onreadystatechange= function(){
+        console.log(xhr.readyState); // not print anything
+        //MOST OF TIME THE API RESPONSE WILL BE IN STRING TYPE
+        if(xhr.readyState ===4){ // If ID = 4 then we got the response back.
+            console.log(typeof(this.responseText)); 
+            const data = JSON.parse(this.responseText) //COnvert String -> Object
+            console.log(typeof(data));  
+            // console.log(data.followers);
+            no = data.followers
+            // console.log(data.avatar_url);
+            image = data.avatar_url ;
+            // console.log(image);
+            fun(no,image);
+
+        }
+        
+    }
+    function fun(no,image){
+        console.log("Hello")
+        console.log(image);
+        console.log(no);
+
+        const img = document.querySelector("#img");
+        const pic = document.createElement("img");
+        const id = document.querySelector("#followers");
+
+        pic.src = image;
+        // console.log(img.src = image)
+        pic.alt="Hitesh Photo"
+        pic.width = 150;
+        pic.height = 150;
+        img.appendChild(pic)
+        
+        id.innerHTML = no;
+        
+    }
+      
+</script>
+</html>
