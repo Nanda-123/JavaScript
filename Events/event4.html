@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            JavaScript 
+        </title>
+    </head>
+    <body>
+        <h1> Change Backgroud Color Every Second</h1>
+        <button id="start">Start</button> 
+        <button id="stop">Stop</button>
+    </body>
+    <script>
+    
+    //1.
+   
+    //    const start = document.getElementById("start")
+    //    const stop = document.getElementById("stop")
+       
+    //    /*
+    //    const repeat = start.addEventListener("click", function(){
+    //     console.log("hi", Date.now())
+    //    }) 
+    //    */// Onclick of start it display value onetime
+        
+    //    //Generate a Hexa Number : 0-9 and A-F
+    //    /*
+    //    let hex = '0123456789ABCDEF';
+    //     let sym = '#'
+    //     console.log(Math.random()*16) ; 
+    //     console.log(Math.floor(Math.random()*16)) ; 
+
+    //    for(let i=0 ; i<6 ; i++ ){
+    //     sym += hex[Math.floor(Math.random()*16)]
+    //    } // at 6th iteration it generated an Hex[123456] number
+    //    console.log(sym)
+
+    //   */ //  keep everything in one fuction so we can return the random color code.addEventListener
+
+    // //OR let  randomNo = function(){ 
+    //     function randomNo(){
+    //         let hex = '0123456789ABCDEF';
+    //         let sym = '#'
+    //             for(let i=0 ; i<6 ; i++ ){
+    //             sym += hex[Math.floor(Math.random()*16)]
+    //             }
+    //             return sym;
+    //             // console.log(sym);
+    //     }
+    //     // randomNo();
+    //     // console.log(randomNo());
+        
+    // const body = document.querySelector("body");
+    // //    console.log(body)
+
+    // //ON CLICK OF START COLOR SHOULD CHANGE
+    // /*
+    //    start.addEventListener("click", function(){
+    //     // console.log(randomNo());
+    //     body.style.backgroundColor =randomNo();      
+        
+    //    })
+    //    */
+
+       
+    //   //ON CLICK OF START COLOR SHOULD Every Sec
+    //   let res = function(){
+    //     return body.style.backgroundColor =randomNo()
+    //    }
+    //    let clr
+    //    start.addEventListener("click", function(){
+    //     // let res = body.style.backgroundColor =randomNo() 
+    //     // above line Only work onclick of button next time will not work SO use a function
+    //     clr = setInterval(res,1000);
+    //    })
+
+    //    //Stop Onclick of Stop button
+    //    stop.addEventListener("click", function(){
+    //     clearInterval(clr);
+    //    })
+       
+    //2.
+    //Instead  OF CREATING FUNCTION INSIDE DIRECT CREATE OUSIDE
+   
+    let setIntervalID; 
+    let colorCode ;
+    colorCode = function (){
+            let hex = '0123456789ABCDEF';
+            let sym = '#'
+                for(let i=0 ; i<6 ; i++ ){
+                sym += hex[Math.floor(Math.random()*16)]
+                }
+                return sym;
+        }
+    
+    const startChangeColors = function(){
+        setIntervalID= setInterval(res, 1000);
+        
+        function res(){
+        body.style.backgroundColor= colorCode(); 
+                   
+        } 
+      
+    }
+    const stopChangeColors = function(){
+        clearInterval(setIntervalID)
+    }
+   
+    const start= document.getElementById("start").addEventListener("click",startChangeColors)
+    const stop= document.getElementById("stop").addEventListener("click",stopChangeColors)
+    const body = document.querySelector("body")
+   
+
+    </script>
+
+</html>

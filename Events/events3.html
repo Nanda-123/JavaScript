@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            JavaScript 
+        </title>
+    </head>
+    <body>
+        <h1> JavaScript Evenets</h1>
+        <button id="start">Start</button> 
+        <button id="stop">Stop</button>
+    </body>
+    <script>
+        /*
+        setInterval(function(){
+            console.log("Nandini")
+        },2000)
+     */ //It Prints only one time 
+    
+     /*
+     setInterval(function(){
+        console.log("Nanda") //we can't able to see every print stmt.
+     },2000)
+     */
+    /*
+     const setIntr = setInterval(function(){
+        // console.log("Nanda",Date()) 
+        console.log("Nanda",Date.now()) 
+     },2000)
+
+     clearInterval (setIntr)
+
+     */
+    
+        const name1 = function(){
+        console.log("Shree", Date.now());
+        }
+     /*
+        setInterval(name1 , 2000);
+        */
+        // We can pass the Param to the fuction
+     
+        const name = function(param){
+        console.log(param, Date.now());
+        }
+     /*
+        const setT = setInterval(name , 2000, "Soma"); 
+
+        clearInterval (setT) // It stops
+     */
+
+     //USE THE BUTTON TO STOP AND START THE INTERVAL
+
+     const start = document.getElementById("start");
+     const stop1 = document.getElementById("stop");
+
+     let  intervalId 
+      start.addEventListener("click",function(){
+        // Store the ID of the interval
+        intervalId = setInterval(name, 1000, "Hello");
+     })
+
+     stop1.addEventListener("click", function(){
+        clearInterval(intervalId)
+     })
+
+    </script>
+
+</html>

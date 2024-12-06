@@ -237,3 +237,249 @@ function newGame(){
 
 
 ```
+
+Projects On Events
+Project 1:  SetTimeOut()
+``` javascript
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            JavaScript 
+        </title>
+    </head>
+    <body>
+        <h1> JavaScript Evenets</h1>
+        <button id="stop">Stop</button>
+    </body>
+    <script>
+        
+        // const name = "Nanda"
+        
+
+        setTimeout(function(){
+            console.log("Nanda");
+        },2000)
+
+        /*
+        const changeTxt = document.querySelector("h1").innerHTML ="Js Learing"
+        console.log(changeTxt) //suddenlt it changes the name SO set some iterval
+        */
+        const setTime =  setTimeout(function(){
+            const changeTxt = document.querySelector("h1").innerHTML ="Js Learing"
+            console.log(changeTxt)  
+        }, 3000);
+
+        //We can stop the Event
+        // clearTimeout(setTime) // Have to pass the reference of settimeout
+
+        //We can stop the chnages using the Button
+
+        const btn = document.getElementById("stop") ;
+        // console.log(btn);
+        btn.addEventListener("click",function(){
+            clearTimeout(setTime)
+        })
+
+    </script>
+
+</html>
+```
+
+Project 2:  Use BUTTON TO STOP AND START THE INTERVAL : setTimeInterval()
+
+```javascript
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            JavaScript 
+        </title>
+    </head>
+    <body>
+        <h1> JavaScript Evenets</h1>
+        <button id="start">Start</button> 
+        <button id="stop">Stop</button>
+    </body>
+    <script>
+        /*
+        setInterval(function(){
+            console.log("Nandini")
+        },2000)
+     */ //It Prints only one time 
+    
+     /*
+     setInterval(function(){
+        console.log("Nanda") //we can't able to see every print stmt.
+     },2000)
+     */
+    /*
+     const setIntr = setInterval(function(){
+        // console.log("Nanda",Date()) 
+        console.log("Nanda",Date.now()) 
+     },2000)
+
+     clearInterval (setIntr)
+
+     */
+    
+        const name1 = function(){
+        console.log("Shree", Date.now());
+        }
+     /*
+        setInterval(name1 , 2000);
+        */
+        // We can pass the Param to the fuction
+     
+        const name = function(param){
+        console.log(param, Date.now());
+        }
+     /*
+        const setT = setInterval(name , 2000, "Soma"); 
+
+        clearInterval (setT) // It stops
+     */
+
+     //USE THE BUTTON TO STOP AND START THE INTERVAL
+
+     const start = document.getElementById("start");
+     const stop1 = document.getElementById("stop");
+
+     let  intervalId 
+      start.addEventListener("click",function(){
+        // Store the ID of the interval
+        intervalId = setInterval(name, 1000, "Hello");
+     })
+
+     stop1.addEventListener("click", function(){
+        clearInterval(intervalId)
+     })
+
+    </script>
+
+</html>
+```
+
+Project 3 : On click of Button BackgroundColor changes every sec
+
+```Javascript
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            JavaScript 
+        </title>
+    </head>
+    <body>
+        <h1> Change Backgroud Color Every Second</h1>
+        <button id="start">Start</button> 
+        <button id="stop">Stop</button>
+    </body>
+    <script>
+    
+    //1.
+   
+    //    const start = document.getElementById("start")
+    //    const stop = document.getElementById("stop")
+       
+    //    /*
+    //    const repeat = start.addEventListener("click", function(){
+    //     console.log("hi", Date.now())
+    //    }) 
+    //    */// Onclick of start it display value onetime
+        
+    //    //Generate a Hexa Number : 0-9 and A-F
+    //    /*
+    //    let hex = '0123456789ABCDEF';
+    //     let sym = '#'
+    //     console.log(Math.random()*16) ; 
+    //     console.log(Math.floor(Math.random()*16)) ; 
+
+    //    for(let i=0 ; i<6 ; i++ ){
+    //     sym += hex[Math.floor(Math.random()*16)]
+    //    } // at 6th iteration it generated an Hex[123456] number
+    //    console.log(sym)
+
+    //   */ //  keep everything in one fuction so we can return the random color code.addEventListener
+
+    // //OR let  randomNo = function(){ 
+    //     function randomNo(){
+    //         let hex = '0123456789ABCDEF';
+    //         let sym = '#'
+    //             for(let i=0 ; i<6 ; i++ ){
+    //             sym += hex[Math.floor(Math.random()*16)]
+    //             }
+    //             return sym;
+    //             // console.log(sym);
+    //     }
+    //     // randomNo();
+    //     // console.log(randomNo());
+        
+    // const body = document.querySelector("body");
+    // //    console.log(body)
+
+    // //ON CLICK OF START COLOR SHOULD CHANGE
+    // /*
+    //    start.addEventListener("click", function(){
+    //     // console.log(randomNo());
+    //     body.style.backgroundColor =randomNo();      
+        
+    //    })
+    //    */
+
+       
+    //   //ON CLICK OF START COLOR SHOULD Every Sec
+    //   let res = function(){
+    //     return body.style.backgroundColor =randomNo()
+    //    }
+    //    let clr
+    //    start.addEventListener("click", function(){
+    //     // let res = body.style.backgroundColor =randomNo() 
+    //     // above line Only work onclick of button next time will not work SO use a function
+    //     clr = setInterval(res,1000);
+    //    })
+
+    //    //Stop Onclick of Stop button
+    //    stop.addEventListener("click", function(){
+    //     clearInterval(clr);
+    //    })
+       
+    //2.
+    //Instead  OF CREATING FUNCTION INSIDE DIRECT CREATE OUSIDE
+   
+    let setIntervalID; 
+    let colorCode ;
+    colorCode = function (){
+            let hex = '0123456789ABCDEF';
+            let sym = '#'
+                for(let i=0 ; i<6 ; i++ ){
+                sym += hex[Math.floor(Math.random()*16)]
+                }
+                return sym;
+        }
+    
+    const startChangeColors = function(){
+        setIntervalID= setInterval(res, 1000);
+        
+        function res(){
+        body.style.backgroundColor= colorCode(); 
+                   
+        } 
+      
+    }
+    const stopChangeColors = function(){
+        clearInterval(setIntervalID)
+    }
+   
+    const start= document.getElementById("start").addEventListener("click",startChangeColors)
+    const stop= document.getElementById("stop").addEventListener("click",stopChangeColors)
+    const body = document.querySelector("body")
+   
+
+    </script>
+
+</html>
+```

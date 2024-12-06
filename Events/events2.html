@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            JavaScript 
+        </title>
+    </head>
+    <body>
+        <h1> JavaScript Evenets</h1>
+        <button id="stop">Stop</button>
+    </body>
+    <script>
+        
+        // const name = "Nanda"
+        
+
+        setTimeout(function(){
+            console.log("Nanda");
+        },2000)
+
+        /*
+        const changeTxt = document.querySelector("h1").innerHTML ="Js Learing"
+        console.log(changeTxt) //suddenlt it changes the name SO set some iterval
+        */
+        const setTime =  setTimeout(function(){
+            const changeTxt = document.querySelector("h1").innerHTML ="Js Learing"
+            console.log(changeTxt)  
+        }, 3000);
+
+        //We can stop the Event
+        // clearTimeout(setTime) // Have to pass the reference of settimeout
+
+        //We can stop the chnages using the Button
+
+        const btn = document.getElementById("stop") ;
+        // console.log(btn);
+        btn.addEventListener("click",function(){
+            clearTimeout(setTime)
+        })
+
+    </script>
+
+</html>
