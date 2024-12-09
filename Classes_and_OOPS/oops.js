@@ -41,7 +41,10 @@ function User(userName,age,loggedIn){
 
  /**
   * When we add new :
-  * It creates an EMPTY Object first {}.
-  * new keyword call a constructor function
-  * it adds this keyword to object param
+  * NEW EMPTY OBJECT IS CREATED : It creates an EMPTY Object first {}.
+  * a PROTOTYPE IS LINKED : newly created Object gets linked to the prototype property of the constructor function
+  .means: Object gets access to the properties & methods defined on COnstructor prototype.
+  *THE coNSTRUCTOR IS CALLED :  The constructor gunction id called with specified arguments and this is bound to newly create object.
+   IF NO explicit return valur is specufied from the constructor Javascript assumes "this",  & it adds this keyword to object param
+  * THE NEW OBJECT IS RETURNED :
   */
